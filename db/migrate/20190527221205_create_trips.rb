@@ -1,0 +1,18 @@
+class CreateTrips < ActiveRecord::Migration[5.2]
+  def change
+    create_table :trips do |t|
+      t.string :name
+      t.string :description
+      t.string :place
+      t.integer :capacity
+      t.string :hotel
+      t.text :schedule
+      t.integer :price
+      t.date :start
+      t.date :end
+      t.references :user, foreign_key: true
+
+      t.timestamps
+    end
+  end
+end
