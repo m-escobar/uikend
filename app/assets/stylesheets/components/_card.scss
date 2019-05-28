@@ -1,0 +1,65 @@
+.cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 16px;
+}
+
+@media(max-width: 992px) {
+  .cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+.card-trip {
+  overflow: hidden;
+  height: 184px;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  display: flex;
+  align-items: center;
+}
+
+.card-trip img {
+  height: 100%;
+  width: 224px;
+  object-fit: cover;
+}
+
+.card-trip h2 {
+  font-size: 22px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.card-trip h4 {
+  font-size: 18px;
+  margin: 0;
+}
+.card-trip h5 {
+  font-size: 16px;
+  margin: 0;
+}
+
+.card-trip p {
+  font-size: 12px;
+  line-height: 1.4;
+  opacity: .7;
+  margin-bottom: 0;
+  margin-top: 8px;
+}
+
+.card-trip .card-trip-infos {
+  width: 100%;
+}
+
+.card-trip .card-top-details {
+  padding: 16px;
+}
+
+.card-bottom-details {
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  position: relative;
+}
