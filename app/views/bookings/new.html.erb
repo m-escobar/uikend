@@ -1,7 +1,13 @@
-<h1><%= @trip.name %></h1>
-<h2><%= @trip.place %></h2>
-<h4>Ida em:<%= @trip.start %></h4>
-<h4>Volta em:<%= @trip.end %></h4>
-<%= simple_form_for [@trip, @booking] do |f| %>
-  <%= f.submit "Confirmar a compra do pacote", class: "btn btn-primary" %>
-<% end %>
+<div class = "container text-align:center">
+  <div class="row justify-content-center">
+    <div class="col-4">
+      <h1><%= @trip.name %></h1>
+      <h2><%= @trip.place %></h2>
+      <h4>Ida em: <%= @trip.start %></h4>
+      <h4>Volta em: <%= @trip.end %></h4>
+      <%= simple_form_for [@trip, @booking] do |f| %>
+        <%= f.submit "Confirmar a compra!", class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+</div>
