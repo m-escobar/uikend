@@ -28,7 +28,11 @@ class TripsController < ApplicationController
 
   def update
     @trip.update(trip_params)
-    redirect_to @trip
+    if @trip.save
+      redirect_to @trip, notice: 'Trip was successfully edited.'
+    else
+      render :edit
+    end
   end
 
   private
