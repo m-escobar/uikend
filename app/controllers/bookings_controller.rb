@@ -12,7 +12,7 @@ class BookingsController < ApplicationController
     @booking.trip = Trip.find(params[:trip_id])
     @booking.deal_date = Time.now
     if @booking.save
-      redirect_to trips_path
+      redirect_to trip_booking_path(@booking.trip, @booking)
     else
       render :new
     end
