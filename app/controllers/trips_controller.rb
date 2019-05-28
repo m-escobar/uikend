@@ -28,12 +28,16 @@ class TripsController < ApplicationController
   end
 
   def update
-    @trip.update(trip_params)
-    if @trip.save
-      redirect_to @trip, notice: 'Trip was successfully edited.'
+    @trip = Trip.find(:id)
+    if @trip.bookings.count = 0
+      @trip.update(trip_params)
+      if @trip.save
+        redirect_to @trip, notice: 'Trip was successfully edited.'
+      else
+        render :edit
+      end
     else
-      render :edit
-    end
+      redirect_to @trip, notice: 'Trip was already booked.'
   end
 
   private
