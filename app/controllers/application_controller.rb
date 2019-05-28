@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  before_action :authenticate_user!
   def index
     @trips = Trip.all
   end
@@ -6,5 +7,4 @@ class ApplicationController < ActionController::Base
   def show
     @trip = Trip.new
   end
-
 end

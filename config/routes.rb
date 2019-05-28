@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  root to: 'pages#home' #Escobar - alterar para #trips#index quando tiver sido criado
+  root to: 'trips#index'
 
   resources :trips, except: :destroy
 
