@@ -2,28 +2,35 @@
   <div class="text-center"><h1>Pacotes de viagens</h1></div>
 </div>
 
-<% @trips.each do |trip| %>
-  <div class="cards">
+<div class="cards">
+  <% @trips.each do |trip| %>
     <div class="card-trip">
       <%= image_tag("paraty.jpg")%>
       <div class="card-trip-infos">
         <div class="card-top-details">
-          <h2><%= trip.name %></h2>
-          <h4><%= trip.description %></h4>
-          <%= link_to "Mais informações", trip %>
+          <div class="d-inline-flex">
+          <h2 class="pr-2"><%= trip.name %></h2>
+          <%= link_to trip do %>
+            <i class="fas fa-info-circle"></i>
+          <% end %>
           <br>
+          </div>
+          <h4><%= trip.description %></h4>
         </div>
         <div class="card-bottom-details">
           <div>
             <h5><%= trip.place %></h5>
             <p>Ida: <%= trip.start %> | Volta: <%= trip.end %></p>
           </div>
-          <h4 class="card-trip-pricing">R$ <%= trip.price %></h4>
+          <div class="d-flex  justify-content-center align-items-center">
+            <h4 class="card-trip-pricing">R$ <%= trip.price %></h4>
+            <%= link_to "Reserve", new_trip_booking_path(trip), class: "ml-2 btn btn-primary" %>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-<% end %>
+  <% end %>
+</div>
 
 <%= link_to "Criar novo pacote de viagem", new_trip_path %>
 
