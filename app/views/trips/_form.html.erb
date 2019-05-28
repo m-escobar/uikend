@@ -3,39 +3,39 @@
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
   <div class="form-inputs">
-    <%= f.input :name %>
+    <%= f.input :name, label: "Nome do pacote:" %>
   </div>
 
    <div class="form-inputs">
-    <%= f.input :description %>
+    <%= f.input :description, label: "Descrição do pacote:" %>
   </div>
 
    <div class="form-inputs">
-    <%= f.input :place %>
+    <%= f.input :place, label: "Local:" %>
   </div>
 
    <div class="form-inputs">
-    <%= f.input :capacity %>
+    <%= f.input :capacity, label: "Capacidade do pacote:" %>
   </div>
 
   <div class="form-inputs">
-    <%= f.input :hotel %>
+    <%= f.input :hotel, label: "Nome do hotel:" %>
   </div>
 
   <div class="form-inputs">
-    <%= f.input :schedule %>
+    <%= f.input :schedule, label: "Roteiro:" %>
   </div>
 
   <div class="form-inputs">
-    <%= f.input :price %>
+    <%= f.input :price, label: "Preço:", placeholder: 'Colocar o preço em centavos' %>
   </div>
 
   <div class="form-inputs">
-    <%= f.input :start %>
+    <%= f.input :start, label: "Começa em:" %>
   </div>
 
   <div class="form-inputs">
-    <%= f.input :end %>
+    <%= f.input :end, label: "Termina em:" %>
   </div>
 
   <div class="form-actions btn btn-success mb-2 p-0">
