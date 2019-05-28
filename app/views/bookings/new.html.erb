@@ -1,2 +1,7 @@
-<h1>Bookings#new</h1>
-<p>Find me in app/views/bookings/new.html.erb</p>
+<h1><%= @trip.name %></h1>
+<h2><%= @trip.place %></h2>
+<h4>Ida em:<%= @trip.start %></h4>
+<h4>Volta em:<%= @trip.end %></h4>
+<%= simple_form_for [@trip, @booking] do |f| %>
+  <%= f.submit "Confirmar a compra do pacote", class: "btn btn-primary" %>
+<% end %>
