@@ -7,6 +7,8 @@
 <p><%= @trip.price %></p>
 <p><%= @trip.user.email %></p>
 
-<h2><%= link_to "Reserve esta viagem!", new_trip_booking_path %></h2>
+<h2><%= link_to "Editar este pacote.", edit_trip_path(@trip) %></h2>
+
+<h2><%= link_to "Reserve esta viagem!", new_trip_booking_path(@trip) %></h2>
 
 
