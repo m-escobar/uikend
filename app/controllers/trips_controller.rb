@@ -16,7 +16,11 @@ class TripsController < ApplicationController
 
   def create
     @trip = Trip.new(trip_params)
-    redirect_to @trip
+    if @trip.save
+      redirect_to @trip, notice: 'Trip was successfully created.'
+    else
+      render :new
+    end
   end
 
   def edit
@@ -24,7 +28,11 @@ class TripsController < ApplicationController
 
   def update
     @trip.update(trip_params)
-    redirect_to @trip
+    if @trip.save
+      redirect_to @trip, notice: 'Trip was successfully edited.'
+    else
+      render :edit
+    end
   end
 
   private
@@ -35,7 +43,7 @@ class TripsController < ApplicationController
 
   def trip_params
     params.require(:trip).permit(:name, :description, :place,
-                                 :capacity, :hotel, :schedule, :private,
-                                 :start, :end, :user_id)
+                                 :capacity, :hotel, :schedule, :price,
+                                 :start, :end)
   end
 end
