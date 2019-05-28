@@ -21,6 +21,7 @@ group :development do
 end
 
 group :development, :test do
+  gem 'nokogiri'
   gem 'faker'
   gem 'pry-byebug'
   gem 'pry-rails'
