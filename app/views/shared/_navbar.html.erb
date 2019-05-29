@@ -1,26 +1,17 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+<div class="navbar navbar-expand-sm navbar-light navbar-uikend">
   <%= link_to root_path, class: "navbar-brand" do %>
     <%= image_tag("loginho1.png") %>
   <% end %>
 
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <div class = "logo_principal">
-    <%= image_tag("uikend1.png")%>
+  <div class="logo-text">
+    <%= link_to root_path do %>
+      <%= image_tag("uikend1.png")%>
+    <% end %>
   </div>
-
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <% if user_signed_in? %>
-        <li class="nav-item active">
-          <%= link_to "Início", root_path, class: "nav-link" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "Mensagens", "#", class: "nav-link" %>
-        </li>
         <li class="nav-item dropdown">
           <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
