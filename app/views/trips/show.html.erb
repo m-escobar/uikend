@@ -1,11 +1,11 @@
-<div class="justify-content-center mt-0" id="trip-banner-main-info">
-  <div class="banner" id="trip-banner">
-    <div class="container text-center">
-      <h1><%= @trip.name %></h1>
-      <h4><%= @trip.start %> - <%= @trip.end %></h5>
-      <%= link_to "Reserve esta viagem!", new_trip_booking_path(@trip), class: "btn btn-outline-light" %>
-    </div>
+<div class="banner">
+  <div class="text-center">
+    <h1><%= @trip.name %></h1>
+    <h4><%= @trip.start %> - <%= @trip.end %></h5>
+    <%= link_to "Reserve esta viagem!", new_trip_booking_path(@trip), class: "btn-picture-banner" %>
   </div>
+</div>
+<div class="justify-content-center" id="trip-info">
   <div id="main-info">
     <h2><%= @trip.description %></h4>
     <h4><%= @trip.place %></h5>
@@ -14,7 +14,10 @@
     <p><%= @trip.user.email %></p>
     <h2><%= link_to "Editar este pacote.", edit_trip_path(@trip) %></h2>
   </div>
+  <div id="trip-schedule">
+    <h1>Programação</h1>
+    <p><%= @trip.schedule %></p>
+  </div>
 </div>
-<h1>Programação</h1>
-<p><%= @trip.schedule %></p>
+
 

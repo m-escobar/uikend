@@ -1,13 +1,14 @@
-.navbar-lewagon {
+.navbar-uikend {
   justify-content: space-between;
   background: #41A698;
+  color: #F5E1DA !important;
 }
 
-.navbar-lewagon .navbar-collapse {
+.navbar-uikend .navbar-collapse {
   flex-grow: 0;
 }
 
-.navbar-lewagon .navbar-brand img {
+.navbar-uikend .navbar-brand img {
   width: 40px;
 }
 
@@ -15,6 +16,16 @@ h2{
 font-family: 'Merriweather', serif;
 }
 
-.logo_principal img {
-  height: 50px;
+.logo-symbol {
+}
+
+.logo-text {
+  flex-grow: 1;
+}
+.logo-text img {
+  height: 40px;
+}
+
+#navbarSupportedContent {
+
 }
