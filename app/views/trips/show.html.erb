@@ -8,6 +8,7 @@
   </div>
   <div id="main-info">
     <h2><%= @trip.description %></h4>
+    <%= cl_image_tag @trip.photo, height: 300, width: 400, crop: :fill %>
     <h4><%= @trip.place %></h5>
     <p><%= @trip.hotel %></p>
     <p><%= @trip.price %></p>
@@ -15,6 +16,8 @@
     <h2><%= link_to "Editar este pacote.", edit_trip_path(@trip) %></h2>
   </div>
 </div>
+
 <h1>Programação</h1>
 <p><%= @trip.schedule %></p>
+
 
