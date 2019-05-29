@@ -1,8 +1,23 @@
 #trip-info {
+  // background-color: #F4EBE8;
   display: grid;
-  grid-template-columns: 2fr 3fr;
+  grid-template-columns: 2fr 1fr;
   grid-gap: 16px;
-  margin: 0 0 20px 0;
+  margin: 20px;
+  padding: 10px;
+  color: #443E3A;
+  h1 {
+  margin: 0;
+  color: #FF7526;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  font-size: 32px;
+  font-weight: bold;
+  }
+  h2 {
+    margin: 0;
+    font-size: 24px;
+    font-weight: bold;
+  }
 }
 
 #main-info {
@@ -11,4 +26,15 @@
 
 #trip-schedule {
 
+}
+
+#hotel-map img{
+
+}
+
+#price-and-reserve-btn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
 }
