@@ -13,8 +13,7 @@ class BookingsController < ApplicationController
     @booking.trip = @trip
     @booking.deal_date = Time.now
     if @trip.capacity < @trip.bookings.count
-      render :new
-      raise
+      redirect_to new_trip_booking_path(@trip), notice: 'Excedeu capacidade do pacote'
     elsif @booking.save
       redirect_to trip_booking_path(@booking.trip, @booking)
     else
