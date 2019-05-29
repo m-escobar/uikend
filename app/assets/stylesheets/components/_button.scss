@@ -30,8 +30,8 @@
 .btn-banner-orange {
   text-decoration: none;
   color: #F5E1DA;
-  background-color: #FF7526;
-  border-color: #FF7526;
+  background-color: #FF8944;
+  border-color: #FF8944;
   display: inline-block;
   font-weight: bold;
   text-align: center;
@@ -43,15 +43,15 @@
   padding: 0.375rem 0.75rem;
   font-size: 1rem;
   line-height: 1.5;
-  border-radius: 2px;
+  border-radius: 5px;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
 .btn-banner-orange:hover {
   text-decoration: none;
   cursor: pointer !important;
+  color: #F5E1DA;
   border-color: #FF7526;
-  color: #FF7526;
-  background-color: #F5E1DA;
+  background-color: #FF7526;
   border: 1px solid;
 }
