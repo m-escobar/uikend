@@ -3,6 +3,8 @@
   <div class="container">
     <h1><%= @trip.name %></h1>
     <h2><%= @trip.description %></h4>
+    <%= photo_name = @mounted_as %>
+    <%= cl_image_tag @trip.photo, height: 300, width: 400, crop: :fill %>
     <h4><%= @trip.place %></h5>
     <h4><%= @trip.start %> - <%= @trip.end %></h5>
     <p><%= @trip.hotel %></p>
@@ -20,4 +22,3 @@
     <h2><%= link_to "Reserve esta viagem!", new_trip_booking_path(@trip) %></h2>
   </div>
 </div>
-
