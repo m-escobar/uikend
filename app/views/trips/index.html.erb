@@ -10,33 +10,29 @@
       <%= image_tag("imagem3.jpg", class:"d-block w-100") %>
     </div>
     <div class="carousel-caption d-none d-md-block">
-      <h1>Seu fim de semana, melhor </h1>
+      <h1>Seu fim de semana com cara de férias </h1>
     </div>
   </div>
 </div>
-
-
 
 <!-- <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1483729558449-99ef09a8c325?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80)">
   O seu fim de semana começa aqui!
 </div>
  -->
 
-
-
-
 <div class="cards">
   <% @trips.each do |trip| %>
     <div class="card-trip">
-      <%= image_tag("city_paraty.jpg")%>
+      <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
+         url('<%= cl_image_path @trip.photo, height: 600, width: 800, crop: :fill %>')">
+      </div>
       <div class="card-trip-infos">
-        <div class="card-top-details">
-          <div class="d-inline-flex">
-          <h2 class="pr-2"><%= trip.name %></h2>
-          <%= link_to trip do %>
-            <i class="fas fa-info-circle"></i>
-          <% end %>
-          <br>
+        <div class="card-top-details mb-2">
+          <div id="aligned-name-info">
+            <h2 class="pr-2"><%= trip.name %></h2>
+            <%= link_to trip do %>
+              <i class="fas fa-info-circle"></i>
+            <% end %>
           </div>
           <h4><%= trip.description %></h4>
         </div>
