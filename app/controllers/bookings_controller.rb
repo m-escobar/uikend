@@ -9,9 +9,13 @@ class BookingsController < ApplicationController
   def create
     @booking = Booking.new
     @booking.user = current_user
-    @booking.trip = Trip.find(params[:trip_id])
+    @trip = Trip.find(params[:trip_id])
+    @booking.trip = @trip
     @booking.deal_date = Time.now
-    if @booking.save
+    if @trip.capacity < @trip.bookings.count
+      render :new
+      raise
+    elsif @booking.save
       redirect_to trip_booking_path(@booking.trip, @booking)
     else
       render :new
