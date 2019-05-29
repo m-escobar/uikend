@@ -11,7 +11,29 @@
   </div>
 
    <div class="form-inputs">
-    <%= f.input :place, label: "Local:" %>
+    <%= f.input :place, label: "Local:", input_html: { type: "search", id: "address", placeholder: "" } %>
+
+    <p>Selecionado: <strong id="address-value"></strong></p>
+    <script src="https://cdn.jsdelivr.net/npm/places.js@1.16.4"></script>
+    <script>
+    (function() {
+      var placesAutocomplete = places({
+        appId: "plDNP2V5J54H",
+        apiKey: "4e4a09d70e0b7682eceeadfa62eb2221",
+        container: document.querySelector('#address')
+      });
+      console.log(placesAutocomplete)
+      var $address = document.querySelector('#address-value')
+      placesAutocomplete.on('change', function(e) {
+        $address.textContent = e.suggestion.value
+      });
+
+      placesAutocomplete.on('clear', function() {
+        $address.textContent = '';
+      });
+
+    })();
+    </script>
   </div>
 
    <div class="form-inputs">
