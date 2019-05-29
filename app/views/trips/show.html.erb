@@ -1,14 +1,15 @@
-<div class="banner">
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
+         url('<%= cl_image_path @trip.photo, height: 600, width: 800, crop: :fill %>')">
   <div class="text-center">
     <h1><%= @trip.name %></h1>
     <h4><%= @trip.start %> - <%= @trip.end %></h5>
     <%= link_to "Reserve esta viagem!", new_trip_booking_path(@trip), class: "btn-picture-banner" %>
+
   </div>
 </div>
 <div class="justify-content-center" id="trip-info">
   <div id="main-info">
     <h2><%= @trip.description %></h4>
-    <%= cl_image_tag @trip.photo, height: 300, width: 400, crop: :fill %>
     <h4><%= @trip.place %></h5>
     <p><%= @trip.hotel %></p>
     <p><%= @trip.price %></p>
