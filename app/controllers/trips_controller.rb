@@ -26,7 +26,7 @@ class TripsController < ApplicationController
 
   def edit
     @trip = Trip.find(params[:id])
-    if @trip.bookings.count == 0
+    if @trip.bookings.count == 0 && current_user == @trip.user
       render :edit
     else
       redirect_to @trip, notice: 'Pacote já possui uma reserva.'
