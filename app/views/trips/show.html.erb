@@ -10,7 +10,10 @@
     <br>
     <p><strong>Programação:</strong></p>
     <p><%= @trip.schedule %></p>
-    <p><%= link_to "Editar este pacote", edit_trip_path(@trip) %></h2>
+    <% if @trip.user == current_user %>
+      <p><%= link_to "Editar este pacote", edit_trip_path(@trip) %></h2>
+    <% end %>
+
   </div>
   <div class="p-2">
     <div class="border" id="main-info" >
