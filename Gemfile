@@ -11,6 +11,7 @@ gem 'devise'
 gem 'cloudinary', '~> 1.9.1'
 gem 'carrierwave', '~> 1.2'
 
+gem 'faker'
 gem 'autoprefixer-rails'
 gem 'font-awesome-sass', '~> 5.6.1'
 gem 'sassc-rails'
@@ -24,7 +25,6 @@ end
 
 group :development, :test do
   gem 'nokogiri'
-  gem 'faker'
   gem 'pry-byebug'
   gem 'pry-rails'
   gem 'listen', '~> 3.0.5'

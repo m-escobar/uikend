@@ -5,7 +5,7 @@
   background-size: cover;
   background-position: center;
   padding: 150px 0;
-  background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url("intervales.jpg");
+  // background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url("intervales.jpg");
   height: 100px;
   h2, h4{
     color: #F5E1DA;
@@ -13,6 +13,16 @@
   max-width: 100%;
   height: auto;
   }
+}
+
+.banner_noimage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-size: cover;
+  background-position: top;
+  padding: 150px 0;
+  height: 100px;
 }
 
 .banner p {
@@ -24,10 +34,4 @@
 
 #trip-banner {
   background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url("intervales.jpg");
-}
-
-.banner img {
-  background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4));
-  max-width: auto;
-  height: 50%;
 }

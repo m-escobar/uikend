@@ -1,7 +1,5 @@
 <div id="booking-card">
-  <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
-           url('<%= cl_image_path @trip.photo, height: 600, width: 800, crop: :fill %>')">
-  </div>
+  <%= render 'photo_image' %>
   <div class="container text-align:center">
         <h1><%= @trip.name %></h1>
         <h2><%= @trip.place %></h2>
