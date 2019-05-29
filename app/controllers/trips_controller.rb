@@ -29,7 +29,7 @@ class TripsController < ApplicationController
     if @trip.bookings.count == 0 && current_user == @trip.user
       render :edit
     else
-      redirect_to @trip, notice: 'Pacote já possui uma reserva.'
+      redirect_to @trip, notice: current_user != @trip.user ? 'Usuario indevido' : 'Pacote já possui uma reserva.'
     end
   end
 
