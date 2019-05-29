@@ -8,10 +8,12 @@
 .banner {
   background-size: cover;
   background-position: center;
-  padding: 150px 0;
+  padding: 00px 0;
   h2,h4{
     color: white;
     text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  max-width: 100%;
+  height: auto;
   }
 }
 
@@ -32,4 +34,10 @@
 
 #trip-banner {
   background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url("intervales.jpg");
+}
+
+.banner img {
+  background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4));
+  max-width: auto;
+  height: 50%;
 }
