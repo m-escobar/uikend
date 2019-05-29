@@ -14,7 +14,6 @@ class BookingsController < ApplicationController
     @booking.deal_date = Time.now
     if @trip.capacity < @trip.bookings.count
       render :new
-      raise
     elsif @booking.save
       redirect_to trip_booking_path(@booking.trip, @booking)
     else
