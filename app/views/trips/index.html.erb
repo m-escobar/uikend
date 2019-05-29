@@ -22,10 +22,18 @@
 
 <div class="cards">
   <% @trips.each do |trip| %>
+  
     <div class="card-trip">
-      <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
-         url('<%= cl_image_path @trip.photo, height: 600, width: 800, crop: :fill %>')">
-      </div>
+
+<% if trip.photo? then %>
+  <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path trip.photo, height: 200, crop: :fit %>')">
+<% else %>
+  <div class="banner_noimage" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path 'trip_square', height: 200, crop: :fit %>')">
+<% end %>
+</div>
+
+
+    </div>
       <div class="card-trip-infos">
         <div class="card-top-details mb-2">
           <div id="aligned-name-info">

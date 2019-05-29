@@ -17,7 +17,6 @@ class TripsController < ApplicationController
   def create
     @trip = Trip.new(trip_params)
     @trip.user = current_user
-# raise
     if @trip.photo == false
       @trip.photo = 'trip_logo'
     end
