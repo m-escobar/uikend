@@ -4,9 +4,16 @@ class TripsController < ApplicationController
   before_action :set_trip, only: [:show, :edit, :update]
 
   def index
-    #Exclui as Trips com Capacity == 0 ou Capacity = Bookings
-    @trips = Trip.new
-    trips = Trip.where("capacity > 0")
+    # @trips = Trip.new
+    
+    #First plays Search 
+    # raise
+    if params[:query].present?
+      trips = Trip.where("place ILIKE ?", "%#{params[:query]}%")
+    else
+      trips = Trip.where("capacity > 0")
+    end
+    #Exclude Trips with no Capacity or with all Seats over
     @trips = trips.select { |t| t.bookings.count != t.capacity }
   end
 
