@@ -4,8 +4,11 @@ class TripsController < ApplicationController
   before_action :set_trip, only: [:show, :edit, :update]
 
   def index
-    @trips = Trip.where("capacity > 0")
-    @markers = @trips.map do |trip|
+    @trips = Trip.new
+    #Exclui as Trips com Capacity == 0 ou Capacity = Bookings
+    trips = Trip.where("capacity > 0")
+    @trips = trips.select { |t| t.bookings.count != t.capacity }
+    @markers = trips.map do |trip|
       {
         lat: trip.latitude,
         lng: trip.longitude,
