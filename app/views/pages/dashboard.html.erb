@@ -1,14 +1,14 @@
 <div class="container">
 
   <% if @current_user.bookings.empty? then %>
-    <div class="text-center shadow mt-4 p-2 bg-light rounded">
+    <div class="text-center shadow mt-5 p-5 bg-light rounded">
          <h2> Você ainda não tem viagens reservadas! <h2>
         <%= link_to "Escolha o seu pacote", root_path, class: "ml-2 btn-banner-orange" %>
     </div>
 
   <% else %>
     <div class="shadow mt-5 p-5 bg-light rounded">
-      <h1 class="text-center mb-2">Minhas viagens confirmadas</h1>
+      <h2 class="text-center mb-2">Minhas viagens confirmadas</h2>
 <!-- aplicar GROUP_BY ID para aparecer somente 1 vez o mesmo pacote com várias reservas-->
       <% x = @my_booked_trips.group_by{|x| x.trip_id}.values %>
       <% x.each do |booked_trip_group| %>
@@ -32,7 +32,6 @@
                     <% end %></h2>
                   </div>
                   <h5>Vagas reservadas: <%= booked_trip_group.count %></h5>
-<!-- incluir número de vagas reservadas para o mesmo pacote-->
                 </div>
                 <h4><%= booked_trip.description %></h4>
               </div>
@@ -52,14 +51,14 @@
     </div>
   <% end %>
 
-  <% if @current_user.bookings.empty? then %>
-    <div class="text-center shadow mt-4 p-2 bg-light rounded">
+  <% if @current_user.trips.empty? then %>
+    <div class="text-center shadow mt-5 p-5 bg-light rounded">
       <h2>Você ainda não tem viagens publicadas! </h2>
-      <%= link_to "Publique o seu pacote", new_trip_path, class: "ml-2 btn btn-primary" %>
+      <%= link_to "Publique o seu pacote", new_trip_path, class: "ml-2 btn-banner-green" %>
     </div>
   <% else %>
     <div class="shadow mt-5 p-5 bg-light rounded">
-      <h1 class="text-center mb-2">Pacotes oferecidos</h1>
+      <h2 class="text-center mb-2">Pacotes oferecidos</h2>
       <% @my_offered_trips.each do |offered_trip| %>
            <div class="card-trip m-3">
             <% if offered_trip.photo? then %>
@@ -85,7 +84,7 @@
                 </div>
                 <div class="text-right">
                   <h4 class="card-trip-pricing mb-2">R$ <%= offered_trip.price %>/pessoa</h4>
-                  <%= link_to "Detalhes e viajantes confirmados", offered_trip, class: "ml-2 btn btn-primary" %>
+                  <%= link_to "Detalhes e viajantes confirmados", offered_trip, class: "ml-2 btn-banner-green" %>
                 </div>
               </div>
             </div>
