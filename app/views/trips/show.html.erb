@@ -12,6 +12,14 @@
     <p><%= @trip.schedule %></p>
     <% if @trip.user == current_user %>
       <p><%= link_to "Editar este pacote", edit_trip_path(@trip) %></p>
+
+      <p> <%= link_to "Deletar a viagem", trip_path(@trip),
+      method: :delete,
+      data: { confirm: "Tem certeza que quer deletar a viagem?" } %> </p>
+
+
+
+
       <p>Este pacote já foi reservado por: </p>
       <% @trip.bookings.each do |booking| %>
         <p><b><%=booking.user.email %></b></p>
