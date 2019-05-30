@@ -12,7 +12,7 @@
     <p><%= @trip.schedule %></p>
     <% if @trip.user == current_user %>
       <p><%= link_to "Editar este pacote", edit_trip_path(@trip) %></p>
-      <p>Este pacote já foi registrado por: </p>
+      <p>Este pacote já foi reservado por: </p>
       <% @trip.bookings.each do |booking| %>
         <p><b><%=booking.user.email %></b></p>
       <% end %>
