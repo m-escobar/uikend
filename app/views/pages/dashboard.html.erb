@@ -10,9 +10,20 @@
     <div class="shadow mt-5 p-5 bg-light rounded">
       <h2 class="text-center mb-2">Minhas viagens confirmadas</h2>
 <!-- aplicar GROUP_BY ID para aparecer somente 1 vez o mesmo pacote com várias reservas-->
-      <% x = @my_booked_trips.group_by{|x| x.trip_id}.values %>
-      <% x.each do |booked_trip_group| %>
-        <% booked_trip = Trip.find(booked_trip_group[0].trip_id) %>
+      <% groups_by_id = @my_booked_trips.group_by{|x| x.trip_id}.values %>
+      <% bookings_count = [] %>
+      <% groups_by_id.each do |trip| %>
+        <% bc = {} %>
+        <% bc[:id] = trip[0].trip_id %>
+        <% bc[:count] = trip.count %>
+        <% bookings_count << bc %>
+      <% end %>
+
+      <% trips_grouped = groups_by_id.map do |booked_trip_group| %>
+        <% Trip.find(booked_trip_group[0].trip_id) %>
+      <% end %>
+      <% trips_ordered = trips_grouped.sort_by(&:trip_start) %>
+      <% trips_ordered.each do |booked_trip| %>
            <div class="card-trip m-3">
             <% if booked_trip.photo? then %>
               <div class="banner_img" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path booked_trip.photo, height: 400, crop: :fit %>')">
@@ -31,7 +42,8 @@
                       <i class="fas fa-info-circle"></i>
                     <% end %></h2>
                   </div>
-                  <h5>Vagas reservadas: <%= booked_trip_group.count %></h5>
+                  <% b_count = bookings_count.select{ |item| item[:id] == booked_trip.id }[0][:count] %>
+                  <h5>Vagas reservadas: <%= b_count %></h5>
                 </div>
                 <h4><%= booked_trip.description %></h4>
               </div>
@@ -41,7 +53,7 @@
                   <p>Ida: <%= booked_trip.trip_start %> | Volta: <%= booked_trip.trip_end %></p>
                 </div>
                 <div class="text-right">
-                  <h5 class="card-trip-pricing mb-2">R$ <%= booked_trip.price %>/pessoa | Total: R$ <%= booked_trip.price * booked_trip_group.count%></h5>
+                  <h5 class="card-trip-pricing mb-2">R$ <%= booked_trip.price %>/pessoa | Total: R$ <%= booked_trip.price * b_count %></h5>
                   <%= link_to "Reserve mais uma vaga", new_trip_booking_path(booked_trip), class: "ml-2 px-4 btn-banner-orange" %>
                 </div>
               </div>
