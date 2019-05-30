@@ -5,8 +5,8 @@ class TripsController < ApplicationController
 
   def index
     # @trips = Trip.new
-    
-    #First plays Search 
+
+    #First plays Search
     # raise
     if params[:query].present?
       trips = Trip.where("place ILIKE ?", "%#{params[:query]}%")
@@ -73,6 +73,6 @@ class TripsController < ApplicationController
   def trip_params
     params.require(:trip).permit(:name, :description, :place,
                                  :capacity, :hotel, :schedule, :price,
-                                 :start, :end, :photo)
+                                 :trip_start, :trip_end, :photo)
   end
 end
