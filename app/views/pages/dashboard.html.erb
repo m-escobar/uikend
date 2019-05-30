@@ -1,0 +1,97 @@
+<div class="container">
+
+  <% if @current_user.bookings.empty? then %>
+    <div class="text-center shadow mt-4 p-2 bg-light rounded">
+         <h2> Você ainda não tem viagens reservadas! <h2>
+        <%= link_to "Escolha o seu pacote", root_path, class: "ml-2 btn-banner-orange" %>
+    </div>
+
+  <% else %>
+    <div class="shadow mt-5 p-5 bg-light rounded">
+      <h1 class="text-center mb-2">Minhas viagens confirmadas</h1>
+<!-- aplicar GROUP_BY ID para aparecer somente 1 vez o mesmo pacote com várias reservas-->
+      <% x = @my_booked_trips.group_by{|x| x.trip_id}.values %>
+      <% x.each do |booked_trip_group| %>
+        <% booked_trip = Trip.find(booked_trip_group[0].trip_id) %>
+           <div class="card-trip m-3">
+            <% if booked_trip.photo? then %>
+              <div class="banner_img" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path booked_trip.photo, height: 400, crop: :fit %>')">
+              </div>
+            <% else %>
+              <div class="banner_img" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path 'trip_square', height: 400, crop: :fit %>')">
+              </div>
+            <% end %>
+
+            <div class="card-trip-infos p-2">
+              <div class="card-top-details mb-2">
+                <div id="aligned-name-info">
+                  <div>
+                    <h2 class="pr-2"><%= booked_trip.name %>
+                    <%= link_to booked_trip do %>
+                      <i class="fas fa-info-circle"></i>
+                    <% end %></h2>
+                  </div>
+                  <h5>Vagas reservadas: <%= booked_trip_group.count %></h5>
+<!-- incluir número de vagas reservadas para o mesmo pacote-->
+                </div>
+                <h4><%= booked_trip.description %></h4>
+              </div>
+              <div class="card-bottom-details">
+                <div>
+                  <h5><%= booked_trip.place %></h5>
+                  <p>Ida: <%= booked_trip.start %> | Volta: <%= booked_trip.end %></p>
+                </div>
+                <div class="text-right">
+                  <h4 class="card-trip-pricing mb-2">R$ <%= booked_trip.price %>/pessoa</h4>
+                  <%= link_to "Reserve mais uma vaga", new_trip_booking_path(booked_trip), class: "ml-2 btn-banner-orange" %>
+                </div>
+              </div>
+            </div>
+          </div>
+      <% end %>
+    </div>
+  <% end %>
+
+  <% if @current_user.bookings.empty? then %>
+    <div class="text-center shadow mt-4 p-2 bg-light rounded">
+      <h2>Você ainda não tem viagens publicadas! </h2>
+      <%= link_to "Publique o seu pacote", new_trip_path, class: "ml-2 btn btn-primary" %>
+    </div>
+  <% else %>
+    <div class="shadow mt-5 p-5 bg-light rounded">
+      <h1 class="text-center mb-2">Pacotes oferecidos</h1>
+      <% @my_offered_trips.each do |offered_trip| %>
+           <div class="card-trip m-3">
+            <% if offered_trip.photo? then %>
+              <div class="banner_img" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path offered_trip.photo, height: 400, crop: :fit %>')">
+              </div>
+            <% else %>
+              <div class="banner_img" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path 'trip_square', height: 400, crop: :fit %>')">
+              </div>
+            <% end %>
+
+            <div class="card-trip-infos p-2">
+              <div class="card-top-details mb-2">
+                <div id="aligned-name-info">
+                  <h2 class="pr-2"><%= offered_trip.name %></h2>
+                  <h5>Vagas reservadas: <%= offered_trip.bookings.count%></h5>
+                </div>
+                <h4><%= offered_trip.description %></h4>
+              </div>
+              <div class="card-bottom-details">
+                <div>
+                  <h5><%= offered_trip.place %></h5>
+                  <p>Ida: <%= offered_trip.start %> | Volta: <%= offered_trip.end %></p>
+                </div>
+                <div class="text-right">
+                  <h4 class="card-trip-pricing mb-2">R$ <%= offered_trip.price %>/pessoa</h4>
+                  <%= link_to "Detalhes e viajantes confirmados", offered_trip, class: "ml-2 btn btn-primary" %>
+                </div>
+              </div>
+            </div>
+          </div>
+      <% end %>
+    </div>
+  <% end %>
+
+</div>
