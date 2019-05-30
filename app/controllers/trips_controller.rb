@@ -4,11 +4,7 @@ class TripsController < ApplicationController
   before_action :set_trip, only: [:show, :edit, :update, :destroy]
 
   def index
-    # @trips = Trip.new
-
     #First plays Search
-
-    # raise
     if params[:query].present?
       trips = Trip.where("place ILIKE ?", "%#{params[:query]}%")
     else
@@ -17,7 +13,7 @@ class TripsController < ApplicationController
     #Exclude Trips with no Capacity or with all Seats over
     today = DateTime.now
 
-    @trips = trips.select { |t| (t.bookings.count != t.capacity) && (t.start > today) }
+    @trips = trips.select { |t| (t.bookings.count != t.capacity) && (t.trip_start > today) }
     @markers = trips.map do |trip|
       {
         lat: trip.latitude,
