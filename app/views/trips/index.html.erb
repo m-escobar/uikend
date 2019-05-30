@@ -23,7 +23,6 @@
 <div class="cards">
   <% @trips.each do |trip| %>
     <div class="card-trip">
-    <%# <%raise%>
           <% if trip.photo? then %>
         <div class="banner_img" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path trip.photo, height: 400, crop: :fit %>')">
         </div>

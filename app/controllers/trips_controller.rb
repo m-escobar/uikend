@@ -4,7 +4,7 @@ class TripsController < ApplicationController
   before_action :set_trip, only: [:show, :edit, :update]
 
   def index
-    @trips = Trip.all
+    @trips = Trip.where("capacity > 0")
   end
 
   def show
