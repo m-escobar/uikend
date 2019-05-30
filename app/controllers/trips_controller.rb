@@ -1,7 +1,7 @@
 class TripsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
-  before_action :set_trip, only: [:show, :edit, :update]
+  before_action :set_trip, only: [:show, :edit, :update, :destroy]
 
   def index
     @trips = Trip.new
@@ -55,6 +55,17 @@ class TripsController < ApplicationController
     else
         render :edit
     end
+  end
+
+  def destroy
+    @trip = Trip.find(params[:id])
+    if @trip.bookings.count == 0 && current_user == @trip.user
+      @trip.destroy
+      redirect_to root_path, notice: 'Pacote apagado com sucesso.'
+    else
+      redirect_to @trip, notice: current_user != @trip.user ? 'Usuario indevido' : 'Pacote já possui uma reserva.'
+    end
+
   end
 
   private
