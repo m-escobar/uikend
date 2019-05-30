@@ -15,6 +15,13 @@ class TripsController < ApplicationController
     end
     #Exclude Trips with no Capacity or with all Seats over
     @trips = trips.select { |t| t.bookings.count != t.capacity }
+    @markers = trips.map do |trip|
+      {
+        lat: trip.latitude,
+        lng: trip.longitude,
+        # infoWindow: render_to_string(partial: "infowindow", locals: { trip: trip })
+      }
+    end
   end
 
   def show
