@@ -37,7 +37,7 @@
   </div>
 
    <div class="form-inputs">
-    <%= f.input :capacity, label: "Capacidade do pacote:" %>
+    <%= f.input :capacity, input_html: { min: '1', step: 'any'}, label: "Capacidade do pacote:" %>
   </div>
 
   <div class="form-inputs">
@@ -49,7 +49,7 @@
   </div>
 
   <div class="form-inputs">
-    <%= f.input :price, label: "Preço:", placeholder: 'Colocar o preço sem centavos' %>
+    <%= f.input :price, input_html: { min: '1', step: 'any'}, label: "Preço:", placeholder: 'Colocar o preço sem centavos' %>
   </div>
 
   <div class="form-inputs">
