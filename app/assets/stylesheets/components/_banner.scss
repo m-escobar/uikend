@@ -15,6 +15,16 @@
   }
 }
 
+.banner_img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-size: cover;
+  background-position: center;
+  padding: 0 0;
+  width: 400px;
+  height: 200px;
+}
 .banner_noimage {
   display: flex;
   justify-content: center;
