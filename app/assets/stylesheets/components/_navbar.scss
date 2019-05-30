@@ -1,7 +1,21 @@
 .navbar-uikend {
   justify-content: space-between;
   background: #41A698;
-  color: #F5E1DA !important;
+  padding-right: 0.5rem;
+  padding-left: 0.5rem;
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
+}
+
+@media (min-width: 576px) {
+  .navbar-expand-sm {
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+  }
 }
 
 .navbar-uikend .navbar-collapse {
@@ -16,7 +30,16 @@ h2{
 font-family: 'Merriweather', serif;
 }
 
-.logo-symbol {
+.navbar-uikend ul{
+  cursor: pointer;
+}
+
+.navbar-uikend .nav-uikend-links {
+  color: #F5E1DA;
+}
+
+.navbar-uikend ul a:hover{
+  color: #CEBDB7 !important;
 }
 
 .logo-text {
@@ -26,6 +49,32 @@ font-family: 'Merriweather', serif;
   height: 40px;
 }
 
-#navbarSupportedContent {
+.nav-right-items {
+  display: flex;
+    img {
+    height: 40px;
+  }
+}
 
+.navbar-uikend .nav-uikend-links {
+  a {
+    color: #F5E1DA;
+    font-weight: bold;
+    text-decoration: none;
+    background-color: transparent;
+  }
+}
+
+.navbar-uikend .nav-uikend-dropdown {
+  a {
+    color: #443E3A;
+    font-weight: bold;
+    text-decoration: none;
+    background-color: transparent;
+  }
+}
+
+.nav-links {
+  display: block;
+  padding: 0.5rem 1rem;
 }
