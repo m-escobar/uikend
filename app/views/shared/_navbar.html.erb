@@ -9,6 +9,15 @@
     <% end %>
   </div>
 
+<%# #Search %>
+<%= form_tag trips_path, method: :get do %>
+  <%= text_field_tag :query,
+    params[:query],
+    class: "search",
+    placeholder: "Busque sua viagem..."
+  %>
+<% end %>
+
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <% if user_signed_in? %>

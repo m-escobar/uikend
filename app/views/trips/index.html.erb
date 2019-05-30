@@ -15,16 +15,13 @@
   </div>
 </div>
 
-<!-- <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1483729558449-99ef09a8c325?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80)">
-  O seu fim de semana começa aqui!
-</div>
- -->
-
 <div class="cards">
   <% @trips.each do |trip| %>
     <div class="card-trip">
       <% if trip.photo? then %>
-        <div class="banner_img" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path trip.photo, height: 400, crop: :fit %>')"></div>
+        <div class="banner_img" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path trip.photo, height: 400, crop: :fit %>')">
+        </div>
+
       <% else %>
         <div class="banner_img" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path 'trip_square', height: 400, crop: :fit %>')"></div>
       <% end %>
