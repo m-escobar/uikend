@@ -1,10 +1,13 @@
 class TripsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
-  before_action :set_trip, only: [:show, :edit, :update]
+  before_action :set_trip, only: [:show, :edit, :update, :destroy]
 
-  def index    
-    #First plays Search 
+  def index
+    # @trips = Trip.new
+
+    #First plays Search
+
     # raise
     if params[:query].present?
       trips = Trip.where("place ILIKE ?", "%#{params[:query]}%")
@@ -64,6 +67,17 @@ class TripsController < ApplicationController
     end
   end
 
+  def destroy
+    @trip = Trip.find(params[:id])
+    if @trip.bookings.count == 0 && current_user == @trip.user
+      @trip.destroy
+      redirect_to root_path, notice: 'Pacote apagado com sucesso.'
+    else
+      redirect_to @trip, notice: current_user != @trip.user ? 'Usuario indevido' : 'Pacote já possui uma reserva.'
+    end
+
+  end
+
   private
 
   def set_trip
@@ -73,6 +87,6 @@ class TripsController < ApplicationController
   def trip_params
     params.require(:trip).permit(:name, :description, :place,
                                  :capacity, :hotel, :schedule, :price,
-                                 :start, :end, :photo)
+                                 :trip_start, :trip_end, :photo)
   end
 end

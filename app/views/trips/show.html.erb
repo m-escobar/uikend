@@ -6,12 +6,20 @@
     <h1 class="mb-2"><%= @trip.name %></h1>
     <h2 class="mb-2"><%= @trip.description %></h4>
     <h4><%= @trip.place %></h4>
-    <p class="mt-2"><strong>Ida:</strong> <%= @trip.start.strftime("%d/%m/%Y") %> | <strong>Volta:</strong> <%= @trip.end.strftime("%d/%m/%Y") %></p>
+    <p class="mt-2"><strong>Ida:</strong> <%= @trip.trip_start.strftime("%d/%m/%Y") %> | <strong>Volta:</strong> <%= @trip.trip_end.strftime("%d/%m/%Y") %></p>
     <br>
     <p><strong>Programação:</strong></p>
     <p><%= @trip.schedule %></p>
     <% if @trip.user == current_user %>
       <p><%= link_to "Editar este pacote", edit_trip_path(@trip) %></p>
+
+      <p> <%= link_to "Deletar a viagem", trip_path(@trip),
+      method: :delete,
+      data: { confirm: "Tem certeza que quer deletar a viagem?" } %> </p>
+
+
+
+
       <p>Este pacote já foi reservado por: </p>
       <% @trip.bookings.each do |booking| %>
         <p><b><%=booking.user.email %></b></p>
