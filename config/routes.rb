@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
 
   get 'dashboard', to: 'pages#dashboard', as: :dashboard
+
+
+  get '/profiles', to: 'profiles#my_profile', as: :my_profile
   devise_for :users
+
+  resources :profiles, only: [:show, :edit, :update]
   root to: 'trips#index'
 
   # resources :trips, except: :destroy
