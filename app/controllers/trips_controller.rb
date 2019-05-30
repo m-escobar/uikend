@@ -5,6 +5,13 @@ class TripsController < ApplicationController
 
   def index
     @trips = Trip.where("capacity > 0")
+    @markers = @trips.map do |trip|
+      {
+        lat: trip.latitude,
+        lng: trip.longitude,
+        # infoWindow: render_to_string(partial: "infowindow", locals: { trip: trip })
+      }
+    end
   end
 
   def show
