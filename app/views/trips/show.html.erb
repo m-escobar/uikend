@@ -17,10 +17,15 @@
   </div>
   <div class="p-2">
     <div class="border" id="main-info" >
-      <p><strong>Hospedagem:</strong></p>
-      <p><%= @trip.hotel %></p>
+      <div class="d-flex justify-content-between">
+        <div>
+          <p><strong>Hospedagem:</strong></p>
+          <p><%= @trip.hotel %></p>
+      </div>
+          <p><strong>vagas:</strong> <%= @trip.capacity - @trip.bookings.count%></p>
+      </div>
       <div id="price-and-reserve-btn">
-        <p><strong>R$ <%= @trip.price %>,00</strong>/pessoa</p>
+        <p class="pr-2"><strong>R$ <%= @trip.price %>,00</strong>/pessoa</p>
         <%= link_to "Reservar!", new_trip_booking_path(@trip), class: "btn-banner-orange" %>
       </div>
 
