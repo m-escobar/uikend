@@ -13,7 +13,7 @@
     <% if @trip.user == current_user %>
       <p><%= link_to "Editar este pacote", edit_trip_path(@trip) %></p>
 
-      <p> <%= link_to "Deletar a viagem", trip_path(@trip),
+      <p> <%= link_to "Delete", trip_path(@trip),
       method: :delete,
       data: { confirm: "Tem certeza que quer deletar a viagem?" } %> </p>
 
