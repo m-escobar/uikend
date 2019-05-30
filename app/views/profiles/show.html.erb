@@ -1,1 +1,10 @@
-<h1>Show profile</h1>
+<div class="container">
+  <h1>Show profile</h1>
+  <p>Nome: <%= @profile.name %></p>
+  <p>CPF: <%= @profile.cpf %></p>
+  <% if @profile.company.present? %>
+    <p>Empresa: <%= @profile.company %></p>
+  <% end %>
+  <p>Telefone: <%= @profile.phone %></p>
+  <%= link_to "Editar Perfil", edit_profile_path(@profile), class: "btn btn-primary" %>
+</div>
