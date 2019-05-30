@@ -9,7 +9,7 @@
     <p class="mt-2"><strong>Ida:</strong> <%= @trip.trip_start.strftime("%d/%m/%Y") %> | <strong>Volta:</strong> <%= @trip.trip_end.strftime("%d/%m/%Y") %></p>
     <br>
     <p><strong>Programação:</strong></p>
-    <p><%= @trip.schedule %></p>
+    <p><%= @trip.schedule.gsub(/\n/, '<br/>').html_safe %></p>
     <% if @trip.user == current_user %>
       <p><%= link_to "Editar este pacote", edit_trip_path(@trip) %></p>
 
