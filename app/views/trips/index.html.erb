@@ -44,7 +44,7 @@
         <div class="card-bottom-details">
           <div>
             <h5><%= trip.place %></h5>
-            <p>Ida: <%= trip.start %> | Volta: <%= trip.end %></p>
+            <p>Ida: <%= trip.start.strftime("%d/%m/%Y") %> | Volta: <%= trip.end.strftime("%d/%m/%Y") %></p>
           </div>
           <div class="d-flex  justify-content-center align-items-center">
             <h4 class="card-trip-pricing">R$ <%= trip.price %></h4>
