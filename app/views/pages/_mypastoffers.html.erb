@@ -2,7 +2,7 @@
       <h2 class="text-center mb-2">Pacotes previamente oferecidos</h2>
 
       <% offered_trips = [] %>
-      <% @my_offered_trips.each do |offer| %> 
+      <% @my_offered_trips.each do |offer| %>
         <% trip_start = Trip.find(offer.id).trip_start %>
         <% today = Time.now %>
         <% if today > trip_start then %>
@@ -11,8 +11,8 @@
       <% end %>
 
       <% offered_trips.each do |offered_trip| %>
-      <%# <% raise %> 
-           <div class="card-trip m-3">
+      <%# <% raise %>
+           <div class="card-trip card-trip-horizontal m-3">
             <% if offered_trip.photo? then %>
               <div class="banner_img" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path offered_trip.photo, height: 400, crop: :fit %>')">
               </div>
@@ -24,7 +24,7 @@
             <div class="card-trip-infos p-2">
               <div class="card-top-details mb-2">
                 <div id="aligned-name-info">
-                  <h2 class="pr-2"><%= offered_trip.name %></h2>
+                  <h2 class="pr-2"><%= link_to offered_trip.name, offered_trip ,class: "text-decoration-none color-dark-gray"%>
                   <div>
                     <h5>Vagas reservadas: <%= offered_trip.bookings.count%></h5>
                     <h5>Vagas disponíveis: <%= offered_trip.capacity - offered_trip.bookings.count%></h5>
