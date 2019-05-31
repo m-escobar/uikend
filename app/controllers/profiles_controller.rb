@@ -30,10 +30,14 @@ class ProfilesController < ApplicationController
 
   def update
     @profile.update(profile_params)
-    if @profile.save
-        redirect_to @profile, notice: 'Perfil editado com sucesso.'
+    if @profile.phone.match(/^\+*\d{0,2}\(*\d{0,2}\)*\d{4,5}-*\d{4}$/) && @profile.cpf.match(/^\d{3}\.*\d{3}\.*\d{3}-*\d{2}$/)
+      if @profile.save
+          redirect_to @profile, notice: 'Perfil editado com sucesso.'
+      else
+          render :edit
+      end
     else
-        render :edit
+      render :edit
     end
   end
 
