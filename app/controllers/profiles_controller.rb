@@ -3,9 +3,9 @@ class ProfilesController < ApplicationController
 
   def my_profile
     user = current_user
-    # unless user.profile.present?
-    #   user.profile = Profile.create
-    # end
+    if Profile.all.select{ |x| x.user_id == user.id }.empty?
+      user.profile = Profile.create(user_id: user.id)
+    end
     redirect_to user.profile
   end
 
