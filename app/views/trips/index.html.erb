@@ -18,12 +18,13 @@
 <div class="cards">
   <% @trips.each do |trip| %>
     <div class="card-trip card-trip-vertical">
-      <% if trip.photo? then %>
-        <div class="banner-img-vertical-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path trip.photo, height: 400, crop: :fit %>')">
-        </div>
-
-      <% else %>
-        <div class="banner-img-vertical-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path 'trip_square', height: 400, crop: :fit %>')"></div>
+      <%= link_to trip do %>
+        <% if trip.photo? then %>
+          <div class="banner-img-vertical-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path trip.photo, height: 400, crop: :fit %>')">
+          </div>
+        <% else %>
+          <div class="banner-img-vertical-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path 'trip_square', height: 400, crop: :fit %>')"></div>
+        <% end %>
       <% end %>
       <div class="card-trip-infos">
         <div class="card-top-details mb-1">
