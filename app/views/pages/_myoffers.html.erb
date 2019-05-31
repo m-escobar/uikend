@@ -1,6 +1,16 @@
     <div class="shadow mt-5 p-5 bg-light rounded">
-      <h2 class="text-center mb-2">Pacotes oferecidos</h2>
-      <% @my_offered_trips.each do |offered_trip| %>
+      <h2 class="text-center mb-2">Pacotes atualmente oferecidos</h2>
+
+      <% offered_trips = [] %>
+      <% @my_offered_trips.each do |offer| %> 
+        <% trip_start = Trip.find(offer.id).trip_start %>
+        <% today = Time.now %>
+        <% if today < trip_start then %>
+            <% offered_trips << offer %>
+        <% end %>
+      <% end %>
+
+      <% offered_trips.each do |offered_trip| %>
            <div class="card-trip m-3">
             <% if offered_trip.photo? then %>
               <div class="banner_img" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path offered_trip.photo, height: 400, crop: :fit %>')">
