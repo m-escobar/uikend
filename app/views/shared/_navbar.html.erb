@@ -25,9 +25,13 @@
           <div class="nav-uikend-links">
           <%= link_to "Divulgue seu pacote", new_trip_path, class: "nav-links" %>
           </div>
-          <% profile = Profile.find(current_user.profile.id) %>
-          <% if profile.photo? then %>
-            <% image_perfil = cl_image_path profile.photo, height: 100, width: 100, gravity: 'face', crop: 'crop' %>
+          <% if current_user.profile.present? %>
+            <% profile = Profile.find(current_user.profile.id) %>
+            <% if profile.photo? then %>
+              <% image_perfil = cl_image_path profile.photo, height: 100, width: 100, gravity: 'face', crop: 'crop' %>
+              <% else %>
+            <% image_perfil = image_path 'profile_image', height: 100, width: 100, crop: 'crop' %>
+          <% end %>
           <% else %>
             <% image_perfil = image_path 'profile_image', height: 100, width: 100, crop: 'crop' %>
           <% end %>
