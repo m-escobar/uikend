@@ -1,0 +1,5 @@
+class ChangePhoneToBeStringInProfiles < ActiveRecord::Migration[5.2]
+  def change
+    change_column :profiles, :phone, :string
+  end
+end
