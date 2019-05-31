@@ -1,6 +1,5 @@
 <%= render 'photo_image'%>
 
-</div>
 <div class="justify-content-center" id="trip-info">
   <div id="trip-schedule p-2">
     <h1 class="mb-2"><%= @trip.name %></h1>
@@ -34,23 +33,20 @@
           <p><strong>Hospedagem:</strong></p>
           <p><%= @trip.hotel %></p>
       </div>
-          <p><strong>vagas:</strong> <%= @trip.capacity - @trip.bookings.count%></p>
+          <p><strong>Vagas disponíveis:</strong> <%= @trip.capacity - @trip.bookings.count%></p>
       </div>
       <div id="price-and-reserve-btn">
-        <p class="pr-2"><strong>R$ <%= @trip.price %>,00</strong>/pessoa</p>
+        <p class="pr-2"><strong>Pacote: R$ <%= @trip.price %>,00</strong>/pessoa</p>
         <%= link_to "Reservar!", new_trip_booking_path(@trip), class: "btn-banner-orange" %>
       </div>
 
-    </div>
-    <div class="banner mt-2">
-        <div
-          id="map"
-          style="width: 100%;
-          height: 600px;"
-          data-markers="<%=  @markers_show.to_json %>"
-          data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
-        ></div>
-    </div>
+      <div
+        id="map"
+        style="width: 100%;
+        height: 600px;"
+        data-markers="<%=  @markers_show.to_json %>"
+        data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+      ></div>
   </div>
 </div>
 
