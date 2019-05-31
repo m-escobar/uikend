@@ -1,4 +1,11 @@
-<h1><%= @booking.trip.name %></h1>
-<h3>A sua viagem para <%= @booking.trip.place %> está confirmada.</h3>
-<p>Entre em contato através do e-mail <%= @booking.user.email %> para alinhar os detalhes.</p>
-<h2>Boa viagem!</h2>
+<div class="container text-center shadow mt-5 p-5 bg-light rounded">
+  <h1><strong><%= @booking.trip.name %></strong></h1>
+  <br>
+  <h3>A sua viagem para <%= @booking.trip.place %> está confirmada.</h3>
+  <br>
+  <p>Entre em contato através do e-mail <strong><%= @booking.user.email %></strong>  para alinhar os detalhes.</p>
+  <br>
+  <h1>Boa viagem!</h1>
+  <br>
+  <%= link_to "Reserve mais uma vaga", new_trip_booking_path(@booking.trip), class: "ml-2 px-4 btn-banner-orange" %>
+</div>
