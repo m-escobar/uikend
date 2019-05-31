@@ -15,13 +15,13 @@
           <% new_groups_by_id << trip %>
           <% end %>
       <% end %>
-      
+
       <% trips_grouped = new_groups_by_id.map do |booked_trip_group| %>
         <% Trip.find(booked_trip_group[0].trip_id) %>
       <% end %>
       <% trips_ordered = trips_grouped.sort_by(&:trip_start) %>
       <% trips_ordered.each do |booked_trip| %>
-        <div class="card-trip m-3">
+        <div class="card-trip card-trip-horizontal m-3">
         <% if booked_trip.photo? then %>
           <div class="banner_img" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path booked_trip.photo, height: 400, crop: :fit %>')">
           </div>
