@@ -2,11 +2,11 @@ class ProfilesController < ApplicationController
   before_action :set_profile, only: [:show, :edit, :update]
 
   def my_profile
-    # user = current_user
+    user = current_user
     # unless user.profile.present?
     #   user.profile = Profile.create
     # end
-    redirect_to Profile.first
+    redirect_to user.profile
   end
 
   def show
