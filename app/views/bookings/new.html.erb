@@ -6,13 +6,25 @@
         <h4 class="mt-2"><strong>Ida:</strong> <%= @trip.start %> | <strong>Volta:</strong> <%= @trip.end %></h4>
         <br>
         <p><strong>R$ <%= @trip.price %>,00</strong>/pessoa</p>
+        <p><strong>Hospedagem:</strong></p>
+        <p><%= @trip.hotel %></p>
+        <p><strong>Programação:</strong></p>
+        <p><%= @trip.schedule %></p>
         <br>
         <%= simple_form_for [@trip, @booking] do |f| %>
           <%= f.submit "Confirmar a compra!", class: "btn-banner-orange" %>
         <% end %>
+
+  <div class="banner mt-2">
+    <div
+      id="map"
+      style="width: 100%;
+      height: 300px;"
+      data-markers="<%=  @markers_show.to_json %>"
+      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+  ></div>
   </div>
 </div>
-    <p><strong>Hospedagem:</strong></p>
-    <p><%= @trip.hotel %></p>
-    <p><strong>Programação:</strong></p>
-    <p><%= @trip.schedule %></p>
+
+
+

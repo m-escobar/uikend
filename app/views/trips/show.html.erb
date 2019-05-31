@@ -34,7 +34,15 @@
       </div>
 
     </div>
-    <div class="banner mt-2" style="background-image: url(https://cdn-images-1.medium.com/max/800/1*FbzQStUzSsLChBJE9108hg.png);">
+    <div class="banner mt-2">
+        <div
+          id="map"
+          style="width: 100%;
+          height: 600px;"
+          data-markers="<%=  @markers_show.to_json %>"
+          data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+        ></div>
     </div>
   </div>
 </div>
+
