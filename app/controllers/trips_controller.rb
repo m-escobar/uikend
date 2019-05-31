@@ -24,6 +24,9 @@ class TripsController < ApplicationController
   end
 
   def show
+   @markers_show = [lat: @trip.latitude, lng: @trip.longitude]
+      # infoWindow: render_to_string(partial: "infowindow", locals: { trip: trip })
+
   end
 
   def new

@@ -4,6 +4,7 @@ class BookingsController < ApplicationController
   def new
     @booking = Booking.new
     @trip = Trip.find(params[:trip_id])
+    @markers_show = [lat: @trip.latitude, lng: @trip.longitude]
   end
 
   def create
