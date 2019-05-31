@@ -2,7 +2,7 @@
 
   <% if @current_user.bookings.empty? then %>
     <div class="text-center shadow mt-5 p-5 bg-light rounded">
-         <h2> Você ainda não tem viagens reservadas! <h2>
+         <h2 class="dark-gray"> Você ainda não tem viagens reservadas! <h2>
         <%= link_to "Escolha o seu pacote", root_path, class: "ml-2 btn-banner-orange" %>
     </div>
 
@@ -19,5 +19,4 @@
   <% else %>
     <%= render 'myoffers'%>
   <% end %>
-
 </div>

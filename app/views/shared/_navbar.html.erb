@@ -25,7 +25,17 @@
           <div class="nav-uikend-links">
           <%= link_to "Divulgue seu pacote", new_trip_path, class: "nav-links" %>
           </div>
-          <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+          <% if current_user.profile.present? %>
+            <% profile = Profile.find(current_user.profile.id) %>
+            <% if profile.photo? then %>
+              <% image_perfil = cl_image_path profile.photo, height: 100, width: 100, gravity: 'face', crop: 'crop' %>
+              <% else %>
+            <% image_perfil = image_path 'profile_image', height: 100, width: 100, crop: 'crop' %>
+          <% end %>
+          <% else %>
+            <% image_perfil = image_path 'profile_image', height: 100, width: 100, crop: 'crop' %>
+          <% end %>
+          <%= image_tag image_perfil, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
           <div class="dropdown-menu dropdown-menu-right nav-uikend-dropdown" aria-labelledby="navbarDropdown">
             <%= link_to "Meu perfil", my_profile_path(), class: "dropdown-item" %>
             <%= link_to "Painel", dashboard_path, class: "dropdown-item" %>

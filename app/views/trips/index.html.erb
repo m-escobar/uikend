@@ -17,18 +17,18 @@
 
 <div class="cards">
   <% @trips.each do |trip| %>
-    <div class="card-trip">
+    <div class="card-trip card-trip-vertical">
       <% if trip.photo? then %>
-        <div class="banner_img" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path trip.photo, height: 400, crop: :fit %>')">
+        <div class="banner-img-vertical-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path trip.photo, height: 400, crop: :fit %>')">
         </div>
 
       <% else %>
-        <div class="banner_img" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path 'trip_square', height: 400, crop: :fit %>')"></div>
+        <div class="banner-img-vertical-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path 'trip_square', height: 400, crop: :fit %>')"></div>
       <% end %>
       <div class="card-trip-infos">
-        <div class="card-top-details mb-2">
+        <div class="card-top-details mb-1">
           <div id="aligned-name-info">
-            <h2 class="pr-2"><%= link_to trip.name, trip ,class: "text-decoration-none"%></h2>
+            <h2 class="pr-2"><%= link_to trip.name, trip ,class: "text-decoration-none color-dark-gray"%></h2>
             <%= link_to trip do %>
               <i class="fas fa-info-circle"></i>
             <% end %>
@@ -37,11 +37,11 @@
         </div>
         <div class="card-bottom-details">
           <div>
-            <h5><%= trip.place %></h5>
-            <p>Ida: <%= trip.trip_start.strftime("%d/%m/%Y") %> | Volta: <%= trip.trip_end.strftime("%d/%m/%Y") %></p>
+            <h5>Ida: <%= trip.trip_start.strftime("%d/%m/%Y") %></h5>
+            <h5>Volta: <%= trip.trip_end.strftime("%d/%m/%Y") %></h5>
           </div>
-          <div class="d-flex  justify-content-center align-items-center">
-            <h4 class="card-trip-pricing">R$ <%= trip.price %></h4>
+          <div class="text-right">
+            <h4 class="card-trip-pricing mb-1">R$ <%= trip.price %></h4>
             <%= link_to "Reserve", new_trip_booking_path(trip), class: "ml-2 btn btn-primary" %>
           </div>
         </div>
