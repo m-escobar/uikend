@@ -1,5 +1,11 @@
-<div class="container">
-  <h1>Show profile</h1>
+<div class="container my-3">
+
+  <div class="d-flex flex-row align-items-center">
+    <div class="m-4">
+        <%= render 'photo_image'%>
+    </div>
+    <h1>Meu Perfil</h1>
+  </div>
   <p>Nome: <%= @profile.name %></p>
   <p>CPF: <%= @profile.cpf %></p>
   <% if @profile.company.present? %>
@@ -8,3 +14,4 @@
   <p>Telefone: <%= @profile.phone %></p>
   <%= link_to "Editar Perfil", edit_profile_path(@profile), class: "btn btn-primary" %>
 </div>
+
