@@ -6,8 +6,7 @@ class ProfilesController < ApplicationController
     # unless user.profile.present?
     #   user.profile = Profile.create
     # end
-    # redirect_to user.profile
-    puts "Seu perfil"
+    redirect_to Profile.first
   end
 
   def show
