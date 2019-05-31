@@ -25,7 +25,7 @@
       <% end %>
       <% trips_ordered = trips_grouped.sort_by(&:trip_start) %>
       <% trips_ordered.each do |booked_trip| %>
-           <div class="card-trip m-3">
+           <div class="card-trip card-trip-horizontal m-3">
             <% if booked_trip.photo? then %>
               <div class="banner_img" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path booked_trip.photo, height: 400, crop: :fit %>')">
               </div>
@@ -73,7 +73,7 @@
     <div class="shadow mt-5 p-5 bg-light rounded">
       <h2 class="text-center mb-2">Pacotes oferecidos</h2>
       <% @my_offered_trips.sort_by(&:trip_start).each do |offered_trip| %>
-           <div class="card-trip m-3">
+           <div class="card-trip card-trip-horizontal m-3">
             <% if offered_trip.photo? then %>
               <div class="banner_img" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path offered_trip.photo, height: 400, crop: :fit %>')">
               </div>
