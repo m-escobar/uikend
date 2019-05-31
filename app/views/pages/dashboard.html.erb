@@ -7,8 +7,8 @@
     </div>
 
   <% else %>
-    <%= render 'mytrips' %>%
-    <%= render 'mypasttrips' %>%
+    <%= render 'mytrips' %>
+    <%= render 'mypasttrips' %>
   <% end %>
 
   <% if @current_user.trips.empty? then %>
@@ -17,7 +17,7 @@
       <%= link_to "Publique o seu pacote", new_trip_path, class: "ml-2 btn-banner-green" %>
     </div>
   <% else %>
-    <%= render 'myoffers'%>%
+    <%= render 'myoffers'%>
   <% end %>
 
 </div>

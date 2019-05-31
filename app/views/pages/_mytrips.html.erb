@@ -3,14 +3,20 @@
       <!-- aplicar GROUP_BY ID para aparecer somente 1 vez o mesmo pacote com várias reservas-->
       <% groups_by_id = @my_booked_trips.group_by{|x| x.trip_id}.values %>
       <% bookings_count = [] %>
+      <% new_groups_by_id = [] %>
       <% groups_by_id.each do |trip| %>
-        <% bc = {} %>
-        <% bc[:id] = trip[0].trip_id %>
-        <% bc[:count] = trip.count %>
-        <% bookings_count << bc %>
+        <% trip_start = Trip.find(trip.first.trip_id).trip_start %>
+        <% today = Time.now %>
+        <% if today < trip_start then %>
+          <% bc = {} %>
+          <% bc[:id] = trip[0].trip_id %>
+          <% bc[:count] = trip.count %>
+          <% bookings_count << bc %>
+          <% new_groups_by_id << trip %>
+          <% end %>
       <% end %>
-
-      <% trips_grouped = groups_by_id.map do |booked_trip_group| %>
+      
+      <% trips_grouped = new_groups_by_id.map do |booked_trip_group| %>
         <% Trip.find(booked_trip_group[0].trip_id) %>
       <% end %>
       <% trips_ordered = trips_grouped.sort_by(&:trip_start) %>
