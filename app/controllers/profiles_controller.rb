@@ -2,24 +2,27 @@ class ProfilesController < ApplicationController
   before_action :set_profile, only: [:show, :edit, :update]
 
   def my_profile
-    unless current_user.profile.present?
-      current_user.profile = Profile.create
+    user = current_user
+    unless user.profile.present?
+      user.profile = Profile.create
     end
-    redirect_to current_user.profile
+    redirect_to user.profile
 
   end
 
   def show
-    if current_user.profile == @profile
+    user = current_user
+    if user.profile == @profile
       render :show
-      @user = current_user
+      @user = user
     else
       redirect_to root_path, notice: 'Usuario indevido'
     end
   end
 
   def edit
-    if current_user.profile == @profile
+    user = current_user
+    if user.profile == @profile
       render :edit
     else
       redirect_to root_path, notice: 'Usuario indevido'
