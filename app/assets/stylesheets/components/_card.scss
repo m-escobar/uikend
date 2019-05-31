@@ -98,6 +98,16 @@
   position: relative;
 }
 
+.card-trip-booking-infos {
+  height: 100%;
+  padding: 16px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: center;
+  grid-gap: 28px;
+  margin: 20px ;
+}
+
 .card-category {
   background-size: cover;
   background-position: center;
@@ -113,7 +123,7 @@
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
 }
 
-#booking-card {
+#booking-info-card {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 16px;
@@ -124,4 +134,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.booking-container {
+  max-width: 800px;
 }
